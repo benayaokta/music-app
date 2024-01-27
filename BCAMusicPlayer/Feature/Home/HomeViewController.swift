@@ -93,6 +93,10 @@ final class HomeViewController: BaseViewController {
                 loadingIndicator.startAnimating()
             case .showAlert(let text):
                 DialogHelper().showAlertDialog(on: self, title: "Error", message: text)
+            case .hideEmptyView:
+                self.tableView.backgroundView = nil
+            case .resetState:
+                self.setTableViewBG()
             }
         }.store(in: &cancellables)
     }
@@ -101,6 +105,9 @@ final class HomeViewController: BaseViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCellClass(type: HomeTableViewCell.self)
+        setTableViewBG()
+    }
+    private func setTableViewBG() {
         tableView.backgroundView = bgView
     }
     

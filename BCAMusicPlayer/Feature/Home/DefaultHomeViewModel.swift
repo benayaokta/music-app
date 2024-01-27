@@ -29,29 +29,35 @@ final class DefaultHomeViewModel: HomeViewModel {
     private var cancellables: Set<AnyCancellable> = []
     
     func sendSearchResult(text: String) {
-        viewResultWrapper.send(.loading)
-        APIManager().request(config: APIConfiguration.searchArtist(name: text), model: SearchArtistResult.self) { [weak self] data, error in
-            self?.viewResultWrapper.send(.idle)
-            if let data, data.resultCount > 0 {
-                var names: [String] = []
-                data.results.forEach({names.append($0.artistName ?? "")})
-                let temporarySet = Set(names)
-                self?.allArtist.append(contentsOf: temporarySet)
+        if text == "" {
+            self.clearData()
+        } else {
+            viewResultWrapper.send(.loading)
+            APIManager().request(config: APIConfiguration.searchArtist(name: text), model: SearchArtistResult.self) { [weak self] data, error in
+                self?.viewResultWrapper.send(.idle)
+                self?.viewResultWrapper.send(.hideEmptyView)
+                if let data, data.resultCount > 0 {
+                    var names: [String] = []
+                    data.results.forEach({names.append($0.artistName ?? "")})
+                    let temporarySet = Set(names)
+                    self?.allArtist.append(contentsOf: temporarySet)
+                } else {
+                    self?.viewResultWrapper.send(.showAlert(message: "Search result not found"))
+                }
+                
+                if let error {
+                    self?.viewResultWrapper.send(.showAlert(message: error.localizedDescription))
+                }
                 self?.shouldReload.send(true)
-            } else {
-                print("||| not found")
             }
-            
-            if let error {
-                print("||| error \(error)")
-            }
-            
         }
+        
     }
     
     private func clearData() {
         self.allArtist.removeAll()
         self.shouldReload.send(true)
+        self.viewResultWrapper.send(.resetState)
     }
     
 }
