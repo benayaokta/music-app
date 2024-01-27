@@ -12,6 +12,10 @@
 		F4B841262B64E39E0038DEF9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B841252B64E39E0038DEF9 /* BaseViewController.swift */; };
 		F4B841292B64E5090038DEF9 /* CoreExtension in Frameworks */ = {isa = PBXBuildFile; productRef = F4B841282B64E5090038DEF9 /* CoreExtension */; };
 		F4B8412C2B64E53D0038DEF9 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8412B2B64E53D0038DEF9 /* HomeTableViewCell.swift */; };
+		F4B8412E2B64E7EC0038DEF9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8412D2B64E7EC0038DEF9 /* APIManager.swift */; };
+		F4B841312B64E8100038DEF9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F4B841302B64E8100038DEF9 /* Alamofire */; };
+		F4B841332B64EABE0038DEF9 /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B841322B64EABE0038DEF9 /* APIConfiguration.swift */; };
+		F4B841352B64ED440038DEF9 /* SearchArtistResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B841342B64ED440038DEF9 /* SearchArtistResponseModel.swift */; };
 		F4FA845F2B64DE5800B73F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA845E2B64DE5800B73F4C /* AppDelegate.swift */; };
 		F4FA84612B64DE5800B73F4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84602B64DE5800B73F4C /* SceneDelegate.swift */; };
 		F4FA84632B64DE5800B73F4C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84622B64DE5800B73F4C /* HomeViewController.swift */; };
@@ -42,6 +46,9 @@
 /* Begin PBXFileReference section */
 		F4B841252B64E39E0038DEF9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F4B8412B2B64E53D0038DEF9 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		F4B8412D2B64E7EC0038DEF9 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		F4B841322B64EABE0038DEF9 /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
+		F4B841342B64ED440038DEF9 /* SearchArtistResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArtistResponseModel.swift; sourceTree = "<group>"; };
 		F4FA845B2B64DE5800B73F4C /* BCAMusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BCAMusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA845E2B64DE5800B73F4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4FA84602B64DE5800B73F4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4B8411D2B64E2880038DEF9 /* Stevia in Frameworks */,
+				F4B841312B64E8100038DEF9 /* Alamofire in Frameworks */,
 				F4B8411A2B64E27F0038DEF9 /* IQKeyboardManagerSwift in Frameworks */,
 				F4B841292B64E5090038DEF9 /* CoreExtension in Frameworks */,
 			);
@@ -104,6 +112,8 @@
 		F4B841202B64E2FC0038DEF9 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F4B8412D2B64E7EC0038DEF9 /* APIManager.swift */,
+				F4B841322B64EABE0038DEF9 /* APIConfiguration.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -128,6 +138,7 @@
 		F4B841232B64E30B0038DEF9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F4B841342B64ED440038DEF9 /* SearchArtistResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,6 +231,7 @@
 				F4B841192B64E27F0038DEF9 /* IQKeyboardManagerSwift */,
 				F4B8411C2B64E2880038DEF9 /* Stevia */,
 				F4B841282B64E5090038DEF9 /* CoreExtension */,
+				F4B841302B64E8100038DEF9 /* Alamofire */,
 			);
 			productName = BCAMusicPlayer;
 			productReference = F4FA845B2B64DE5800B73F4C /* BCAMusicPlayer.app */;
@@ -297,6 +309,7 @@
 				F4B841182B64E27F0038DEF9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				F4B8411B2B64E2880038DEF9 /* XCRemoteSwiftPackageReference "Stevia" */,
 				F4B841272B64E5090038DEF9 /* XCRemoteSwiftPackageReference "BECoreExtension" */,
+				F4B8412F2B64E8100038DEF9 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = F4FA845C2B64DE5800B73F4C /* Products */;
 			projectDirPath = "";
@@ -340,11 +353,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B8412E2B64E7EC0038DEF9 /* APIManager.swift in Sources */,
 				F4FA84632B64DE5800B73F4C /* HomeViewController.swift in Sources */,
 				F4B8412C2B64E53D0038DEF9 /* HomeTableViewCell.swift in Sources */,
 				F4B841262B64E39E0038DEF9 /* BaseViewController.swift in Sources */,
 				F4FA845F2B64DE5800B73F4C /* AppDelegate.swift in Sources */,
+				F4B841332B64EABE0038DEF9 /* APIConfiguration.swift in Sources */,
 				F4FA84612B64DE5800B73F4C /* SceneDelegate.swift in Sources */,
+				F4B841352B64ED440038DEF9 /* SearchArtistResponseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,6 +731,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		F4B8412F2B64E8100038DEF9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -732,6 +756,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F4B841272B64E5090038DEF9 /* XCRemoteSwiftPackageReference "BECoreExtension" */;
 			productName = CoreExtension;
+		};
+		F4B841302B64E8100038DEF9 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B8412F2B64E8100038DEF9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
