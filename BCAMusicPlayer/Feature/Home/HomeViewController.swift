@@ -20,6 +20,7 @@ final class HomeViewController: BaseViewController {
     }
 
     private let tableView: UITableView = UITableView()
+    private let searchController: UISearchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,7 @@ final class HomeViewController: BaseViewController {
         setupConstraint()
         setupStyle()
         setupActions()
+        setupSearchController()
         setupTableView()
         setupObservables()
     }
@@ -59,6 +61,13 @@ final class HomeViewController: BaseViewController {
         tableView.dataSource = self
         tableView.registerCellClass(type: HomeTableViewCell.self)
     }
+    
+    private func setupSearchController() {
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
+        self.navigationItem.searchController = searchController
+        
+    }
 
 }
 
@@ -77,5 +86,21 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+}
+
+extension HomeViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print("||| search bar cancel did click")
+        /*
+         reload table
+         reset state
+         */
+    }
+}
+
+extension HomeViewController: UISearchControllerDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("||| search text \(searchText)")
     }
 }
