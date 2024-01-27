@@ -10,7 +10,6 @@
 		F4FA845F2B64DE5800B73F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA845E2B64DE5800B73F4C /* AppDelegate.swift */; };
 		F4FA84612B64DE5800B73F4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84602B64DE5800B73F4C /* SceneDelegate.swift */; };
 		F4FA84632B64DE5800B73F4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84622B64DE5800B73F4C /* ViewController.swift */; };
-		F4FA84662B64DE5800B73F4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FA84642B64DE5800B73F4C /* Main.storyboard */; };
 		F4FA84682B64DE5A00B73F4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA84672B64DE5A00B73F4C /* Assets.xcassets */; };
 		F4FA846B2B64DE5A00B73F4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FA84692B64DE5A00B73F4C /* LaunchScreen.storyboard */; };
 		F4FA84762B64DE5A00B73F4C /* BCAMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84752B64DE5A00B73F4C /* BCAMusicPlayerTests.swift */; };
@@ -40,7 +39,6 @@
 		F4FA845E2B64DE5800B73F4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4FA84602B64DE5800B73F4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F4FA84622B64DE5800B73F4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F4FA84652B64DE5800B73F4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4FA84672B64DE5A00B73F4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4FA846A2B64DE5A00B73F4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4FA846C2B64DE5A00B73F4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 				F4FA845E2B64DE5800B73F4C /* AppDelegate.swift */,
 				F4FA84602B64DE5800B73F4C /* SceneDelegate.swift */,
 				F4FA84622B64DE5800B73F4C /* ViewController.swift */,
-				F4FA84642B64DE5800B73F4C /* Main.storyboard */,
 				F4FA84672B64DE5A00B73F4C /* Assets.xcassets */,
 				F4FA84692B64DE5A00B73F4C /* LaunchScreen.storyboard */,
 				F4FA846C2B64DE5A00B73F4C /* Info.plist */,
@@ -233,7 +230,6 @@
 			files = (
 				F4FA846B2B64DE5A00B73F4C /* LaunchScreen.storyboard in Resources */,
 				F4FA84682B64DE5A00B73F4C /* Assets.xcassets in Resources */,
-				F4FA84662B64DE5800B73F4C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +293,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F4FA84642B64DE5800B73F4C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F4FA84652B64DE5800B73F4C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F4FA84692B64DE5A00B73F4C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -368,7 +356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -425,7 +413,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -447,7 +435,6 @@
 				INFOPLIST_FILE = BCAMusicPlayer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -479,7 +466,6 @@
 				INFOPLIST_FILE = BCAMusicPlayer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
