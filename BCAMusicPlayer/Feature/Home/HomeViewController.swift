@@ -9,6 +9,7 @@ import UIKit
 import Stevia
 import CoreExtension
 import Combine
+import NVActivityIndicatorView
 
 final class HomeViewController: BaseViewController {
     
@@ -31,6 +32,8 @@ final class HomeViewController: BaseViewController {
     
     private let bgView = HomeTableViewBackground()
     
+    private let loadingIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: .zero, type: .circleStrokeSpin, color: .black, padding: CGFloat(80))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupHierarchy()
@@ -45,11 +48,13 @@ final class HomeViewController: BaseViewController {
     private func setupHierarchy() {
         view.subviews {
             tableView
+            loadingIndicator
         }
     }
     
     private func setupConstraint() {
         tableView.fillContainer()
+        loadingIndicator.centerHorizontally().centerVertically().width(40).heightEqualsWidth()
     }
     
     private func setupStyle() {
@@ -79,14 +84,15 @@ final class HomeViewController: BaseViewController {
             }
         }.store(in: &cancellables)
         
-        viewModel.viewResultWrapper.sink { [weak self] value in
+        viewModel.viewResultWrapper
+            .receive(on: RunLoop.main)
+            .sink { [weak self] value in
+            guard let self else { return }
             switch value {
             case .idle:
-                break
+                loadingIndicator.stopAnimating()
             case .loading:
-                break
-            case .showSnackbar:
-                break
+                loadingIndicator.startAnimating()
             }
         }.store(in: &cancellables)
     }

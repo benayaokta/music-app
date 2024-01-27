@@ -19,6 +19,7 @@
 		F4B841372B64F5230038DEF9 /* DefaultHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B841362B64F5230038DEF9 /* DefaultHomeViewModel.swift */; };
 		F4B841392B64FB730038DEF9 /* StateWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B841382B64FB730038DEF9 /* StateWrapper.swift */; };
 		F4B8413C2B6501660038DEF9 /* HomeTableViewBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8413B2B6501660038DEF9 /* HomeTableViewBackground.swift */; };
+		F4B841432B6559060038DEF9 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = F4B841422B6559060038DEF9 /* NVActivityIndicatorView */; };
 		F4FA845F2B64DE5800B73F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA845E2B64DE5800B73F4C /* AppDelegate.swift */; };
 		F4FA84612B64DE5800B73F4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84602B64DE5800B73F4C /* SceneDelegate.swift */; };
 		F4FA84632B64DE5800B73F4C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84622B64DE5800B73F4C /* HomeViewController.swift */; };
@@ -75,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4B8411D2B64E2880038DEF9 /* Stevia in Frameworks */,
+				F4B841432B6559060038DEF9 /* NVActivityIndicatorView in Frameworks */,
 				F4B841312B64E8100038DEF9 /* Alamofire in Frameworks */,
 				F4B8411A2B64E27F0038DEF9 /* IQKeyboardManagerSwift in Frameworks */,
 				F4B841292B64E5090038DEF9 /* CoreExtension in Frameworks */,
@@ -249,6 +251,7 @@
 				F4B8411C2B64E2880038DEF9 /* Stevia */,
 				F4B841282B64E5090038DEF9 /* CoreExtension */,
 				F4B841302B64E8100038DEF9 /* Alamofire */,
+				F4B841422B6559060038DEF9 /* NVActivityIndicatorView */,
 			);
 			productName = BCAMusicPlayer;
 			productReference = F4FA845B2B64DE5800B73F4C /* BCAMusicPlayer.app */;
@@ -327,6 +330,7 @@
 				F4B8411B2B64E2880038DEF9 /* XCRemoteSwiftPackageReference "Stevia" */,
 				F4B841272B64E5090038DEF9 /* XCRemoteSwiftPackageReference "BECoreExtension" */,
 				F4B8412F2B64E8100038DEF9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F4B841412B6559060038DEF9 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 			);
 			productRefGroup = F4FA845C2B64DE5800B73F4C /* Products */;
 			projectDirPath = "";
@@ -759,6 +763,14 @@
 				minimumVersion = 5.8.1;
 			};
 		};
+		F4B841412B6559060038DEF9 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -781,6 +793,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F4B8412F2B64E8100038DEF9 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		F4B841422B6559060038DEF9 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B841412B6559060038DEF9 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
