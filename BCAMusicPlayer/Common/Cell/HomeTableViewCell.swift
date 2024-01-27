@@ -10,7 +10,9 @@ import Stevia
 
 final class HomeTableViewCell: UITableViewCell {
     
-    let desc: UILabel = UILabel()
+    let trackArtwork: UIImageView = UIImageView()
+    let trackName: UILabel = UILabel()
+    let artist: UILabel = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,14 +36,31 @@ final class HomeTableViewCell: UITableViewCell {
     
     private func setupHierarchy() {
         self.subviews {
-            desc
+            trackArtwork
+            trackName
+            artist
         }
     }
     
     private func setupConstraint() {
-        desc.centerHorizontally().centerVertically()
+        trackArtwork.Leading == self.layoutMarginsGuide.Leading
+        trackArtwork.width(60).heightEqualsWidth().Top == self.safeAreaLayoutGuide.Top + 8
+        trackArtwork.Bottom == self.safeAreaLayoutGuide.Bottom - 8
+        
+        trackName.Leading == trackArtwork.Trailing + 16
+        artist.Leading == trackName.Leading
+        
+        trackName.Top == self.safeAreaLayoutGuide.Top + 8
+        artist.Bottom == self.safeAreaLayoutGuide.Bottom - 8
+        
+        artist.Top >= trackName.Bottom + 8
+        
+        trackName.Trailing == self.layoutMarginsGuide.Trailing
+        artist.Trailing == trackName.Trailing
     }
     
     private func setupStyle() {
+        trackName.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        artist.font = UIFont.systemFont(ofSize: 12, weight: .regular)
     }
 }

@@ -13,7 +13,7 @@ protocol HomeViewModelInput {
 }
 
 protocol HomeViewModelOutput {
-    var allArtist: [String] { get }
+    var allArtist: SearchArtistResult { get }
     var shouldReload: PassthroughSubject<Bool, Never> { get }
     var viewResultWrapper: CurrentValueSubject<StateWrapper, Never> { get }
 }
@@ -22,7 +22,7 @@ protocol HomeViewModel: HomeViewModelInput, HomeViewModelOutput { }
 
 final class DefaultHomeViewModel: HomeViewModel {
     
-    var allArtist: [String] = []
+    var allArtist: SearchArtistResult = SearchArtistResult()
     var viewResultWrapper: CurrentValueSubject<StateWrapper, Never> = CurrentValueSubject<StateWrapper, Never>(.idle)
     var shouldReload: PassthroughSubject<Bool, Never> = PassthroughSubject<Bool, Never>()
     
@@ -37,10 +37,7 @@ final class DefaultHomeViewModel: HomeViewModel {
                 self?.viewResultWrapper.send(.idle)
                 self?.viewResultWrapper.send(.hideEmptyView)
                 if let data, data.resultCount > 0 {
-                    var names: [String] = []
-                    data.results.forEach({names.append($0.artistName ?? "")})
-                    let temporarySet = Set(names)
-                    self?.allArtist.append(contentsOf: temporarySet)
+                    self?.allArtist = data
                 } else {
                     self?.viewResultWrapper.send(.showAlert(message: "Search result not found"))
                 }
@@ -55,7 +52,8 @@ final class DefaultHomeViewModel: HomeViewModel {
     }
     
     private func clearData() {
-        self.allArtist.removeAll()
+        self.allArtist.results.removeAll()
+        self.allArtist.resultCount = 0
         self.shouldReload.send(true)
         self.viewResultWrapper.send(.resetState)
     }

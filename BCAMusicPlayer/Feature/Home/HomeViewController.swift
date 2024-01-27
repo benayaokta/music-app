@@ -10,6 +10,7 @@ import Stevia
 import CoreExtension
 import Combine
 import NVActivityIndicatorView
+import SDWebImage
 
 final class HomeViewController: BaseViewController {
     
@@ -104,6 +105,7 @@ final class HomeViewController: BaseViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        
         tableView.registerCellClass(type: HomeTableViewCell.self)
         setTableViewBG()
     }
@@ -125,19 +127,27 @@ final class HomeViewController: BaseViewController {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.allArtist.count
+        return viewModel.allArtist.resultCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(withType: HomeTableViewCell.self, for: indexPath) as! HomeTableViewCell
-        cell.desc.text = viewModel.allArtist[indexPath.row]
+        let data = viewModel.allArtist.results[indexPath.row]
+        cell.artist.text = data.artistName
+        cell.trackName.text = data.trackName
+        cell.trackArtwork.sd_imageIndicator = SDWebImageActivityIndicator()
+        cell.trackArtwork.sd_setImage(with: URL(string: data.artworkUrl100 ?? ""), placeholderImage: UIImage(systemName: "photo"), options: [.progressiveLoad])
         return cell
     }
 }
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

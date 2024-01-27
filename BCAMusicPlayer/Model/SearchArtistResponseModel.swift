@@ -9,8 +9,13 @@ import Foundation
 
 // MARK: - SearchArtistResult
 struct SearchArtistResult: Codable {
-    let resultCount: Int
-    let results: [Result]
+    var resultCount: Int
+    var results: [Result]
+    
+    init() {
+        self.resultCount = 0
+        self.results = []
+    }
 }
 
 // MARK: - Result
