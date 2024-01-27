@@ -91,6 +91,8 @@ final class HomeViewController: BaseViewController {
                 loadingIndicator.stopAnimating()
             case .loading:
                 loadingIndicator.startAnimating()
+            case .showAlert(let text):
+                DialogHelper().showAlertDialog(on: self, title: "Error", message: text)
             }
         }.store(in: &cancellables)
     }

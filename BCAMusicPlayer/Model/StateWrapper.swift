@@ -10,5 +10,7 @@ import Foundation
 enum StateWrapper {
     case idle
     case loading
-    case showSnackbar
+    case showAlert(message: String)
+    case hideEmptyView
+    case resetState
 }
