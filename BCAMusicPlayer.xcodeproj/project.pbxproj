@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4B8411A2B64E27F0038DEF9 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4B841192B64E27F0038DEF9 /* IQKeyboardManagerSwift */; };
+		F4B8411D2B64E2880038DEF9 /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = F4B8411C2B64E2880038DEF9 /* Stevia */; };
 		F4FA845F2B64DE5800B73F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA845E2B64DE5800B73F4C /* AppDelegate.swift */; };
 		F4FA84612B64DE5800B73F4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84602B64DE5800B73F4C /* SceneDelegate.swift */; };
 		F4FA84632B64DE5800B73F4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84622B64DE5800B73F4C /* ViewController.swift */; };
@@ -54,6 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B8411D2B64E2880038DEF9 /* Stevia in Frameworks */,
+				F4B8411A2B64E27F0038DEF9 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +144,10 @@
 			dependencies = (
 			);
 			name = BCAMusicPlayer;
+			packageProductDependencies = (
+				F4B841192B64E27F0038DEF9 /* IQKeyboardManagerSwift */,
+				F4B8411C2B64E2880038DEF9 /* Stevia */,
+			);
 			productName = BCAMusicPlayer;
 			productReference = F4FA845B2B64DE5800B73F4C /* BCAMusicPlayer.app */;
 			productType = "com.apple.product-type.application";
@@ -212,6 +220,10 @@
 				Base,
 			);
 			mainGroup = F4FA84522B64DE5800B73F4C;
+			packageReferences = (
+				F4B841182B64E27F0038DEF9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				F4B8411B2B64E2880038DEF9 /* XCRemoteSwiftPackageReference "Stevia" */,
+			);
 			productRefGroup = F4FA845C2B64DE5800B73F4C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -601,6 +613,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F4B841182B64E27F0038DEF9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		F4B8411B2B64E2880038DEF9 /* XCRemoteSwiftPackageReference "Stevia" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/freshOS/Stevia";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4B841192B64E27F0038DEF9 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B841182B64E27F0038DEF9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		F4B8411C2B64E2880038DEF9 /* Stevia */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B8411B2B64E2880038DEF9 /* XCRemoteSwiftPackageReference "Stevia" */;
+			productName = Stevia;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F4FA84532B64DE5800B73F4C /* Project object */;
 }
