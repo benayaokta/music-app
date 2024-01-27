@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		F4B8411A2B64E27F0038DEF9 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4B841192B64E27F0038DEF9 /* IQKeyboardManagerSwift */; };
 		F4B8411D2B64E2880038DEF9 /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = F4B8411C2B64E2880038DEF9 /* Stevia */; };
+		F4B841262B64E39E0038DEF9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B841252B64E39E0038DEF9 /* BaseViewController.swift */; };
 		F4FA845F2B64DE5800B73F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA845E2B64DE5800B73F4C /* AppDelegate.swift */; };
 		F4FA84612B64DE5800B73F4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84602B64DE5800B73F4C /* SceneDelegate.swift */; };
-		F4FA84632B64DE5800B73F4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84622B64DE5800B73F4C /* ViewController.swift */; };
+		F4FA84632B64DE5800B73F4C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84622B64DE5800B73F4C /* HomeViewController.swift */; };
 		F4FA84682B64DE5A00B73F4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA84672B64DE5A00B73F4C /* Assets.xcassets */; };
 		F4FA846B2B64DE5A00B73F4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FA84692B64DE5A00B73F4C /* LaunchScreen.storyboard */; };
 		F4FA84762B64DE5A00B73F4C /* BCAMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84752B64DE5A00B73F4C /* BCAMusicPlayerTests.swift */; };
@@ -37,10 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F4B841252B64E39E0038DEF9 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F4FA845B2B64DE5800B73F4C /* BCAMusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BCAMusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA845E2B64DE5800B73F4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4FA84602B64DE5800B73F4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F4FA84622B64DE5800B73F4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4FA84622B64DE5800B73F4C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F4FA84672B64DE5A00B73F4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4FA846A2B64DE5A00B73F4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4FA846C2B64DE5A00B73F4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,6 +80,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F4B8411E2B64E2F00038DEF9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F4FA845E2B64DE5800B73F4C /* AppDelegate.swift */,
+				F4FA84602B64DE5800B73F4C /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F4B8411F2B64E2F70038DEF9 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				F4B841222B64E3070038DEF9 /* Home */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		F4B841202B64E2FC0038DEF9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F4B841212B64E3010038DEF9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F4B841242B64E3920038DEF9 /* Base */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F4B841222B64E3070038DEF9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F4FA84622B64DE5800B73F4C /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F4B841232B64E30B0038DEF9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F4B841242B64E3920038DEF9 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F4B841252B64E39E0038DEF9 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		F4FA84522B64DE5800B73F4C = {
 			isa = PBXGroup;
 			children = (
@@ -101,9 +158,11 @@
 		F4FA845D2B64DE5800B73F4C /* BCAMusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				F4FA845E2B64DE5800B73F4C /* AppDelegate.swift */,
-				F4FA84602B64DE5800B73F4C /* SceneDelegate.swift */,
-				F4FA84622B64DE5800B73F4C /* ViewController.swift */,
+				F4B8411E2B64E2F00038DEF9 /* App */,
+				F4B841212B64E3010038DEF9 /* Common */,
+				F4B841202B64E2FC0038DEF9 /* Service */,
+				F4B841232B64E30B0038DEF9 /* Model */,
+				F4B8411F2B64E2F70038DEF9 /* Feature */,
 				F4FA84672B64DE5A00B73F4C /* Assets.xcassets */,
 				F4FA84692B64DE5A00B73F4C /* LaunchScreen.storyboard */,
 				F4FA846C2B64DE5A00B73F4C /* Info.plist */,
@@ -266,7 +325,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4FA84632B64DE5800B73F4C /* ViewController.swift in Sources */,
+				F4FA84632B64DE5800B73F4C /* HomeViewController.swift in Sources */,
+				F4B841262B64E39E0038DEF9 /* BaseViewController.swift in Sources */,
 				F4FA845F2B64DE5800B73F4C /* AppDelegate.swift in Sources */,
 				F4FA84612B64DE5800B73F4C /* SceneDelegate.swift in Sources */,
 			);
