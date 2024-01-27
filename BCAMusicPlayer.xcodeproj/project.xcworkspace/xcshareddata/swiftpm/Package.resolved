@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "becoreextension",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/benayaokta/BECoreExtension",
+      "state" : {
+        "revision" : "335b719aafcbdd6a2df93e79d5f5a1be4e459d40",
+        "version" : "1.0.0"
+      }
+    },
+    {
       "identity" : "iqkeyboardmanager",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hackiftekhar/IQKeyboardManager",
