@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F4B8411A2B64E27F0038DEF9 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4B841192B64E27F0038DEF9 /* IQKeyboardManagerSwift */; };
-		F4B8411D2B64E2880038DEF9 /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = F4B8411C2B64E2880038DEF9 /* Stevia */; };
 		F4B841262B64E39E0038DEF9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B841252B64E39E0038DEF9 /* BaseViewController.swift */; };
 		F4B841292B64E5090038DEF9 /* CoreExtension in Frameworks */ = {isa = PBXBuildFile; productRef = F4B841282B64E5090038DEF9 /* CoreExtension */; };
 		F4B8412C2B64E53D0038DEF9 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8412B2B64E53D0038DEF9 /* HomeTableViewCell.swift */; };
@@ -21,6 +20,8 @@
 		F4B8413C2B6501660038DEF9 /* HomeTableViewBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B8413B2B6501660038DEF9 /* HomeTableViewBackground.swift */; };
 		F4B841432B6559060038DEF9 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = F4B841422B6559060038DEF9 /* NVActivityIndicatorView */; };
 		F4B841452B655D8E0038DEF9 /* DialogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B841442B655D8E0038DEF9 /* DialogHelper.swift */; };
+		F4B841482B6562B70038DEF9 /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = F4B841472B6562B70038DEF9 /* Stevia */; };
+		F4B8414B2B6564B30038DEF9 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = F4B8414A2B6564B30038DEF9 /* SDWebImage */; };
 		F4FA845F2B64DE5800B73F4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA845E2B64DE5800B73F4C /* AppDelegate.swift */; };
 		F4FA84612B64DE5800B73F4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84602B64DE5800B73F4C /* SceneDelegate.swift */; };
 		F4FA84632B64DE5800B73F4C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84622B64DE5800B73F4C /* HomeViewController.swift */; };
@@ -77,7 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4B8411D2B64E2880038DEF9 /* Stevia in Frameworks */,
+				F4B8414B2B6564B30038DEF9 /* SDWebImage in Frameworks */,
+				F4B841482B6562B70038DEF9 /* Stevia in Frameworks */,
 				F4B841432B6559060038DEF9 /* NVActivityIndicatorView in Frameworks */,
 				F4B841312B64E8100038DEF9 /* Alamofire in Frameworks */,
 				F4B8411A2B64E27F0038DEF9 /* IQKeyboardManagerSwift in Frameworks */,
@@ -259,10 +261,11 @@
 			name = BCAMusicPlayer;
 			packageProductDependencies = (
 				F4B841192B64E27F0038DEF9 /* IQKeyboardManagerSwift */,
-				F4B8411C2B64E2880038DEF9 /* Stevia */,
 				F4B841282B64E5090038DEF9 /* CoreExtension */,
 				F4B841302B64E8100038DEF9 /* Alamofire */,
 				F4B841422B6559060038DEF9 /* NVActivityIndicatorView */,
+				F4B841472B6562B70038DEF9 /* Stevia */,
+				F4B8414A2B6564B30038DEF9 /* SDWebImage */,
 			);
 			productName = BCAMusicPlayer;
 			productReference = F4FA845B2B64DE5800B73F4C /* BCAMusicPlayer.app */;
@@ -338,10 +341,11 @@
 			mainGroup = F4FA84522B64DE5800B73F4C;
 			packageReferences = (
 				F4B841182B64E27F0038DEF9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
-				F4B8411B2B64E2880038DEF9 /* XCRemoteSwiftPackageReference "Stevia" */,
 				F4B841272B64E5090038DEF9 /* XCRemoteSwiftPackageReference "BECoreExtension" */,
 				F4B8412F2B64E8100038DEF9 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				F4B841412B6559060038DEF9 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+				F4B841462B6562B70038DEF9 /* XCRemoteSwiftPackageReference "Stevia" */,
+				F4B841492B6564B30038DEF9 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = F4FA845C2B64DE5800B73F4C /* Products */;
 			projectDirPath = "";
@@ -751,14 +755,6 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		F4B8411B2B64E2880038DEF9 /* XCRemoteSwiftPackageReference "Stevia" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/freshOS/Stevia";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.2;
-			};
-		};
 		F4B841272B64E5090038DEF9 /* XCRemoteSwiftPackageReference "BECoreExtension" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/benayaokta/BECoreExtension";
@@ -783,6 +779,22 @@
 				minimumVersion = 5.1.1;
 			};
 		};
+		F4B841462B6562B70038DEF9 /* XCRemoteSwiftPackageReference "Stevia" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/freshOS/Stevia";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.2;
+			};
+		};
+		F4B841492B6564B30038DEF9 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.18.10;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -790,11 +802,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F4B841182B64E27F0038DEF9 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
-		};
-		F4B8411C2B64E2880038DEF9 /* Stevia */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F4B8411B2B64E2880038DEF9 /* XCRemoteSwiftPackageReference "Stevia" */;
-			productName = Stevia;
 		};
 		F4B841282B64E5090038DEF9 /* CoreExtension */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -810,6 +817,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F4B841412B6559060038DEF9 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
 			productName = NVActivityIndicatorView;
+		};
+		F4B841472B6562B70038DEF9 /* Stevia */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B841462B6562B70038DEF9 /* XCRemoteSwiftPackageReference "Stevia" */;
+			productName = Stevia;
+		};
+		F4B8414A2B6564B30038DEF9 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B841492B6564B30038DEF9 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
