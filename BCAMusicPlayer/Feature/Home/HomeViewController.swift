@@ -68,17 +68,15 @@ final class HomeViewController: BaseViewController {
     
     private func setupObservables() {
         self.localSearchSubject
-            .debounce(for: .milliseconds(800), scheduler: RunLoop.main)
+            .debounce(for: .milliseconds(500),
+                      scheduler: RunLoop.main)
             .sink { [weak self] text in
-                if text != "" {
-                    self?.viewModel.sendSearchResult(text: text)
-                } else {
-                    self?.viewModel.clearData()
-                    self?.bgView.setLabelText(text: "Search more music here")
-                }
+                self?.viewModel.sendSearchResult(text: text)
             }.store(in: &cancellables)
         
-        viewModel.shouldReload.receive(on: RunLoop.main).sink { [weak self] shouldReload in
+        viewModel.shouldReload
+            .receive(on: RunLoop.main)
+            .sink { [weak self] shouldReload in
             if shouldReload {
                 self?.tableView.reloadData()
             }
@@ -139,6 +137,10 @@ extension HomeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let text: String = searchBar.text ?? ""
         localSearchSubject.send(text)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        localSearchSubject.send("")
     }
 }
 

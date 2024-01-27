@@ -10,7 +10,6 @@ import Combine
 
 protocol HomeViewModelInput {
     func sendSearchResult(text: String)
-    func clearData()
 }
 
 protocol HomeViewModelOutput {
@@ -50,7 +49,7 @@ final class DefaultHomeViewModel: HomeViewModel {
         }
     }
     
-    func clearData() {
+    private func clearData() {
         self.allArtist.removeAll()
         self.shouldReload.send(true)
     }
