@@ -60,7 +60,10 @@ final class HomeTableViewCell: UITableViewCell {
     }
     
     private func setupStyle() {
+        self.backgroundColor = .clear
         trackName.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        trackName.textColor = .black
         artist.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        artist.textColor = .black
     }
 }
