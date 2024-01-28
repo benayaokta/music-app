@@ -25,8 +25,9 @@ final class HomeTableViewBackground: UIView {
         self.subviews {
             label
         }
-        setLabelText(text: "Search Here")
+        setLabelText(text: "Search your favorite artists here")
         label.centerHorizontally().centerVertically()
+        label.textColor = .black
     }
     
     func setLabelText(text: String) {
