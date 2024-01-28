@@ -10,6 +10,7 @@ import Alamofire
 
 final class APIManager {
     func request<T: Decodable>(config: URLRequestConvertible, model: T.Type, completion: @escaping (T?, AFError?) -> Void) {
+        AF.cancelAllRequests()
         AF.request(config)
             .validate()
             .responseDecodable(of: T.self,
