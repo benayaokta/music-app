@@ -26,7 +26,7 @@ final class HomeViewController: BaseViewController {
     var viewModel: HomeViewModel!
     
     @Published private var shouldShowAudioControl: Bool = false
-    @Published private var nowPlaying: Result?
+    @Published private var nowPlaying: ResultEntity?
 
     private let tableView: UITableView = UITableView()
     private let searchController: UISearchController = UISearchController()
@@ -138,9 +138,9 @@ final class HomeViewController: BaseViewController {
         
         self.$nowPlaying.sink { [weak self] data in
             guard let self else { return }
-            self.audioPlayingView.showTrack(name: data?.trackName ?? "", 
-                                            artist: data?.artistName ?? "",
-                                            artwork: data?.artworkUrl100 ?? "")
+            self.audioPlayingView.showTrack(name: data?.songs ?? "",
+                                            artist: data?.name ?? "",
+                                            artwork: data?.artworlURLString ?? "")
         }.store(in: &cancellables)
     }
     
@@ -175,16 +175,16 @@ final class HomeViewController: BaseViewController {
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.allArtist.resultCount
+        return viewModel.allArtist.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(withType: HomeTableViewCell.self, for: indexPath) as! HomeTableViewCell
         let data = viewModel.allArtist.results[indexPath.row]
-        cell.artist.text = data.artistName
-        cell.trackName.text = data.trackName
+        cell.artist.text = data.name
+        cell.trackName.text = data.songs
         cell.trackArtwork.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
-        cell.trackArtwork.sd_setImage(with: URL(string: data.artworkUrl100 ?? ""),
+        cell.trackArtwork.sd_setImage(with: URL(string: data.artworlURLString),
                                       placeholderImage: UIImage(systemName: "photo"),
                                       options: [.progressiveLoad])
         return cell
@@ -201,7 +201,7 @@ extension HomeViewController: UITableViewDelegate {
         /// gak perlu ke vm karena ini view logic
         /// dan ada singleton untuk handle audio nya + handle view untuk play pause itu view logic
         let data = viewModel.allArtist.results[indexPath.row]
-        guard let url = URL(string: data.previewURL ?? "") else { return }
+        guard let url = URL(string: data.previewURL) else { return }
         shouldShowAudioControl = shouldShowAudioControl == false
         nowPlaying = data
         AudioHelper.shared.playAudio(of: url)

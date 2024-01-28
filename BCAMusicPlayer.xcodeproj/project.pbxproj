@@ -33,6 +33,7 @@
 		F4FA84822B64DE5A00B73F4C /* BCAMusicPlayerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84812B64DE5A00B73F4C /* BCAMusicPlayerUITestsLaunchTests.swift */; };
 		F4FCF40E2B668CDE00C9BB80 /* UIControl+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FCF40D2B668CDE00C9BB80 /* UIControl+Ext.swift */; };
 		F4FCF4112B668D4E00C9BB80 /* AudioControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FCF4102B668D4E00C9BB80 /* AudioControlComponent.swift */; };
+		F4FCF4132B669FAF00C9BB80 /* SearchArtistEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FCF4122B669FAF00C9BB80 /* SearchArtistEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		F4FA84812B64DE5A00B73F4C /* BCAMusicPlayerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCAMusicPlayerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F4FCF40D2B668CDE00C9BB80 /* UIControl+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Ext.swift"; sourceTree = "<group>"; };
 		F4FCF4102B668D4E00C9BB80 /* AudioControlComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioControlComponent.swift; sourceTree = "<group>"; };
+		F4FCF4122B669FAF00C9BB80 /* SearchArtistEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArtistEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			children = (
 				F4B841342B64ED440038DEF9 /* SearchArtistResponseModel.swift */,
 				F4B841382B64FB730038DEF9 /* StateWrapper.swift */,
+				F4FCF4122B669FAF00C9BB80 /* SearchArtistEntity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				F4FCF40E2B668CDE00C9BB80 /* UIControl+Ext.swift in Sources */,
 				F4B841332B64EABE0038DEF9 /* APIConfiguration.swift in Sources */,
 				F4B841392B64FB730038DEF9 /* StateWrapper.swift in Sources */,
+				F4FCF4132B669FAF00C9BB80 /* SearchArtistEntity.swift in Sources */,
 				F4FA84612B64DE5800B73F4C /* SceneDelegate.swift in Sources */,
 				F4B841352B64ED440038DEF9 /* SearchArtistResponseModel.swift in Sources */,
 			);

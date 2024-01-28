@@ -9,8 +9,8 @@ import Foundation
 
 // MARK: - SearchArtistResult
 struct SearchArtistResult: Codable {
-    var resultCount: Int
-    var results: [Result]
+    let resultCount: Int
+    let results: [Result]
     
     init() {
         self.resultCount = 0
