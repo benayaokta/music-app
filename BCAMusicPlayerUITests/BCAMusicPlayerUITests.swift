@@ -26,7 +26,6 @@ final class BCAMusicPlayerUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
@@ -37,5 +36,56 @@ final class BCAMusicPlayerUITests: XCTestCase {
                 XCUIApplication().launch()
             }
         }
+    }
+    
+    func testTapTextfield() throws {
+        let app = XCUIApplication()
+        app.launch()
+        app.navigationBars["Search Artists"].searchFields["Search"].tap()
+    }
+    
+    func testSearchArtist() throws {
+        let app = XCUIApplication()
+        app.launch()
+        let searchSearchField = app.navigationBars["Search Artists"].searchFields["Search"]
+        let searchButton = app.buttons["Search"]
+        searchSearchField.tap()
+
+        let oKey = app.keys["O"]
+        let lKey = app.keys["l"]
+        let iKey = app.keys["i"]
+        let vKey = app.keys["v"]
+        let aKey = app.keys["a"]
+        
+        let spaceKey = app.keys["space"]
+        let rKey = app.keys["r"]
+        let oSmallKey = app.keys["o"]
+        let dKey = app.keys["d"]
+        let gKey = app.keys["g"]
+        
+        oKey.tap()
+        lKey.tap()
+        iKey.tap()
+        vKey.tap()
+        iKey.tap()
+        aKey.tap()
+        
+        spaceKey.tap()
+        
+        rKey.tap()
+        oSmallKey.tap()
+        dKey.tap()
+        rKey.tap()
+        iKey.tap()
+        gKey.tap()
+        oSmallKey.tap()
+        searchButton.tap()
+        
+        sleep(3) /// need to find a better way
+        
+        app.swipeUp()
+        app.tables.element(boundBy: 0).cells.element(boundBy: 10).tap()
+        sleep(10)
+        
     }
 }
