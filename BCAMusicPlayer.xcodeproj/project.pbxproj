@@ -32,6 +32,7 @@
 		F4FA84802B64DE5A00B73F4C /* BCAMusicPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA847F2B64DE5A00B73F4C /* BCAMusicPlayerUITests.swift */; };
 		F4FA84822B64DE5A00B73F4C /* BCAMusicPlayerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA84812B64DE5A00B73F4C /* BCAMusicPlayerUITestsLaunchTests.swift */; };
 		F4FCF40E2B668CDE00C9BB80 /* UIControl+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FCF40D2B668CDE00C9BB80 /* UIControl+Ext.swift */; };
+		F4FCF4112B668D4E00C9BB80 /* AudioControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FCF4102B668D4E00C9BB80 /* AudioControlComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		F4FA847F2B64DE5A00B73F4C /* BCAMusicPlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCAMusicPlayerUITests.swift; sourceTree = "<group>"; };
 		F4FA84812B64DE5A00B73F4C /* BCAMusicPlayerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCAMusicPlayerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F4FCF40D2B668CDE00C9BB80 /* UIControl+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Ext.swift"; sourceTree = "<group>"; };
+		F4FCF4102B668D4E00C9BB80 /* AudioControlComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioControlComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		F4B841212B64E3010038DEF9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F4FCF40F2B668D3A00C9BB80 /* Component */,
 				F4FCF40C2B668BE700C9BB80 /* Extension */,
 				F4B8414C2B65676A0038DEF9 /* AudioHelper */,
 				F4B8413E2B6556DE0038DEF9 /* AlertHelper */,
@@ -263,6 +266,14 @@
 				F4FCF40D2B668CDE00C9BB80 /* UIControl+Ext.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		F4FCF40F2B668D3A00C9BB80 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				F4FCF4102B668D4E00C9BB80 /* AudioControlComponent.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,6 +427,7 @@
 				F4B841372B64F5230038DEF9 /* DefaultHomeViewModel.swift in Sources */,
 				F4FA84632B64DE5800B73F4C /* HomeViewController.swift in Sources */,
 				F4B8412C2B64E53D0038DEF9 /* HomeTableViewCell.swift in Sources */,
+				F4FCF4112B668D4E00C9BB80 /* AudioControlComponent.swift in Sources */,
 				F4B841262B64E39E0038DEF9 /* BaseViewController.swift in Sources */,
 				F4B8414E2B6567780038DEF9 /* AudioHelper.swift in Sources */,
 				F4B8413C2B6501660038DEF9 /* HomeTableViewBackground.swift in Sources */,
