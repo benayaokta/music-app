@@ -28,27 +28,31 @@ final class DefaultHomeViewModel: HomeViewModel {
     
     private var cancellables: Set<AnyCancellable> = []
     
+    var repo: HomeRepoProtocol
+    init(repo: HomeRepoProtocol) {
+        self.repo = repo
+    }
+    
     func sendSearchResult(text: String) {
         if text == "" {
             self.clearData()
         } else {
             viewResultWrapper.send(.loading)
-            APIManager().request(config: APIConfiguration.searchArtist(name: text), model: SearchArtistResult.self) { [weak self] data, error in
+            repo.searchArtist(name: text) { [weak self] entity, error in
                 self?.viewResultWrapper.send(.idle)
                 self?.viewResultWrapper.send(.hideEmptyView)
-                if let data, data.resultCount > 0 {
-                    self?.allArtist = SearchArtistEntity.mapFromData(model: data)
+                if let entity, entity.count > 0 {
+                    self?.allArtist = entity
                 } else {
                     self?.viewResultWrapper.send(.showAlert(message: "Search result not found"))
                 }
                 
                 if let error {
-                    self?.viewResultWrapper.send(.showAlert(message: error.localizedDescription))
+                    self?.viewResultWrapper.send(.showAlert(message: error))
                 }
                 self?.shouldReload.send(true)
             }
         }
-        
     }
     
     private func clearData() {
@@ -57,5 +61,4 @@ final class DefaultHomeViewModel: HomeViewModel {
         self.shouldReload.send(true)
         self.viewResultWrapper.send(.resetState)
     }
-    
 }

@@ -23,7 +23,7 @@ final class HomeViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    var viewModel: HomeViewModel!
+    var viewModel: HomeViewModel
     
     @Published private var shouldShowAudioControl: Bool = false
     @Published private var nowPlaying: ResultEntity?

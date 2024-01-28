@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 final class APIManager {
-    func request<T: Decodable>(config: URLRequestConvertible, model: T.Type, completion: @escaping (T?, AFError?) -> Void) {
+    func request<T: Decodable>(config: URLRequestConvertible, model: T.Type, completion: @escaping (T?, String?) -> Void) {
         AF.cancelAllRequests()
         AF.request(config)
             .validate()
@@ -20,7 +20,7 @@ final class APIManager {
                 case .success(let value):
                     completion(value, nil)
                 case .failure(let value):
-                    completion(nil, value)
+                    completion(nil, value.localizedDescription)
                 }
             }
     }
