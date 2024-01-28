@@ -24,6 +24,9 @@ final class HomeViewController: BaseViewController {
     }
     
     var viewModel: HomeViewModel!
+    
+    @Published private var shouldShowAudioControl: Bool = false
+    @Published private var nowPlaying: Result?
 
     private let tableView: UITableView = UITableView()
     private let searchController: UISearchController = UISearchController()
@@ -34,6 +37,9 @@ final class HomeViewController: BaseViewController {
     private let bgView = HomeTableViewBackground()
     
     private let loadingIndicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: .zero, type: .circleStrokeSpin, color: .black, padding: CGFloat(80))
+    
+    private let audioPlayingView: AudioControlComponent = AudioControlComponent()
+    private var isPlayingFlag: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,21 +56,33 @@ final class HomeViewController: BaseViewController {
         view.subviews {
             tableView
             loadingIndicator
+            audioPlayingView
         }
     }
     
     private func setupConstraint() {
-        tableView.fillContainer()
+        tableView.fillHorizontally().Top == self.view.safeAreaLayoutGuide.Top
+        tableView.Bottom == self.view.safeAreaLayoutGuide.Bottom
         loadingIndicator.centerHorizontally().centerVertically().width(40).heightEqualsWidth()
+        audioPlayingView.fillHorizontally().centerHorizontally().Bottom == self.view.safeAreaLayoutGuide.Bottom
     }
     
     private func setupStyle() {
-        self.title = "Search Music"
+        self.title = "Search Artists"
         tableView.backgroundColor = .white
+        audioPlayingView.isHidden = true
     }
     
     private func setupActions() {
-        
+        audioPlayingView.setButtonAction(handler: { [weak self] in
+            /// ga perlu ke vm karena ada ini urusan si audio singleton
+            guard let self else { return }
+            if self.isPlayingFlag {
+                AudioHelper.shared.pause()
+            } else {
+                AudioHelper.shared.play()
+            }
+        })
     }
     
     private func setupObservables() {
@@ -100,12 +118,36 @@ final class HomeViewController: BaseViewController {
                 self.setTableViewBG()
             }
         }.store(in: &cancellables)
+        
+        
+        AudioHelper.shared.$isPlaying
+            .sink { [weak self] isPlaying in
+                guard let self else { return }
+                self.isPlayingFlag = isPlaying
+                self.audioPlayingView.setTitle(text: isPlaying ? "Pause" : "Play")
+            }.store(in: &cancellables)
+        
+        self.$shouldShowAudioControl
+            .receive(on: RunLoop.main)
+            .sink { [weak self] shouldShowControl in
+                guard let self else { return }
+                if shouldShowControl {
+                    self.audioPlayingView.isHidden = false
+                }
+            }.store(in: &cancellables)
+        
+        self.$nowPlaying.sink { [weak self] data in
+            guard let self else { return }
+            self.audioPlayingView.showTrack(name: data?.trackName ?? "", 
+                                            artist: data?.artistName ?? "",
+                                            artwork: data?.artworkUrl100 ?? "")
+        }.store(in: &cancellables)
     }
     
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.backgroundColor = .white
         tableView.registerCellClass(type: HomeTableViewCell.self)
         setTableViewBG()
     }
@@ -118,6 +160,12 @@ final class HomeViewController: BaseViewController {
         searchController.searchBar.delegate = self
         searchController.searchBar.isHidden = false
         searchController.isActive = true
+        searchController.searchBar.barStyle = .default
+        searchController.searchBar.tintColor = .black
+        searchController.searchBar.searchTextField.tintColor = .black
+        searchController.searchBar.searchTextField.textColor = .black
+        searchController.searchBar.searchTextField.backgroundColor = .white
+            
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = true
         definesPresentationContext = true
@@ -135,8 +183,10 @@ extension HomeViewController: UITableViewDataSource {
         let data = viewModel.allArtist.results[indexPath.row]
         cell.artist.text = data.artistName
         cell.trackName.text = data.trackName
-        cell.trackArtwork.sd_imageIndicator = SDWebImageActivityIndicator()
-        cell.trackArtwork.sd_setImage(with: URL(string: data.artworkUrl100 ?? ""), placeholderImage: UIImage(systemName: "photo"), options: [.progressiveLoad])
+        cell.trackArtwork.sd_imageIndicator = SDWebImageActivityIndicator.grayLarge
+        cell.trackArtwork.sd_setImage(with: URL(string: data.artworkUrl100 ?? ""),
+                                      placeholderImage: UIImage(systemName: "photo"),
+                                      options: [.progressiveLoad])
         return cell
     }
 }
@@ -148,6 +198,14 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        /// gak perlu ke vm karena ini view logic
+        /// dan ada singleton untuk handle audio nya + handle view untuk play pause itu view logic
+        let data = viewModel.allArtist.results[indexPath.row]
+        guard let url = URL(string: data.previewURL ?? "") else { return }
+        shouldShowAudioControl = shouldShowAudioControl == false
+        nowPlaying = data
+        AudioHelper.shared.playAudio(of: url)
+        AudioHelper.shared.play()
     }
 }
 
