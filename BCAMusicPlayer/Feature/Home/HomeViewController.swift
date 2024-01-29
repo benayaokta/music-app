@@ -187,6 +187,11 @@ extension HomeViewController: UITableViewDataSource {
         cell.trackArtwork.sd_setImage(with: URL(string: data.artworlURLString),
                                       placeholderImage: UIImage(systemName: "photo"),
                                       options: [.progressiveLoad])
+        if data.isSelected {
+            cell.playIcon.isHidden = false
+        } else {
+            cell.playIcon.isHidden = true
+        }
         return cell
     }
 }
@@ -201,6 +206,8 @@ extension HomeViewController: UITableViewDelegate {
         /// gak perlu ke vm karena ini view logic
         /// dan ada singleton untuk handle audio nya + handle view untuk play pause itu view logic
         let data = viewModel.allArtist.results[indexPath.row]
+        viewModel.toggleRowSelected(index: indexPath.row, selected: true)
+        
         guard let url = URL(string: data.previewURL) else { return }
         shouldShowAudioControl = shouldShowAudioControl == false
         nowPlaying = data

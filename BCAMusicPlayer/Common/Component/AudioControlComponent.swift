@@ -57,7 +57,7 @@ final class AudioControlComponent: UIView {
         trackArtist.Bottom == trackArtwork.Bottom
         trackArtist.Top >= trackName.Bottom + 8
         
-        trackName.Trailing >= buttonAction.Leading + 8
+        trackName.Trailing == buttonAction.Leading - 16
         trackArtist.Trailing == trackName.Trailing
 
         buttonAction.width(50).heightEqualsWidth().centerVertically().Trailing == self.layoutMarginsGuide.Trailing - 16
@@ -77,6 +77,8 @@ final class AudioControlComponent: UIView {
         trackName.textColor = .black
         trackArtist.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         trackArtist.textColor = .black
+        
+        trackName.numberOfLines = 0
     }
     
     func setTitle(text: String) {

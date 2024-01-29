@@ -10,6 +10,7 @@ import Combine
 
 protocol HomeViewModelInput {
     func sendSearchResult(text: String)
+    func toggleRowSelected(index: Int, selected: Bool)
 }
 
 protocol HomeViewModelOutput {
@@ -25,6 +26,8 @@ final class DefaultHomeViewModel: HomeViewModel {
     var allArtist: SearchArtistEntity = SearchArtistEntity()
     var viewResultWrapper: CurrentValueSubject<StateWrapper, Never> = CurrentValueSubject<StateWrapper, Never>(.idle)
     var shouldReload: PassthroughSubject<Bool, Never> = PassthroughSubject<Bool, Never>()
+    
+    private var temporaryIndex: Int?
     
     private var cancellables: Set<AnyCancellable> = []
     
@@ -53,6 +56,21 @@ final class DefaultHomeViewModel: HomeViewModel {
                 self?.shouldReload.send(true)
             }
         }
+    }
+    
+    func toggleRowSelected(index: Int, selected: Bool) {
+        if temporaryIndex == nil {
+            self.allArtist.results[index].isSelected = selected
+            temporaryIndex = index
+        } else if temporaryIndex != nil {
+            if temporaryIndex != index {
+                self.allArtist.results[temporaryIndex!].isSelected = false
+                self.allArtist.results[index].isSelected = selected
+                temporaryIndex = index
+            }
+        }
+        
+        shouldReload.send(true)
     }
     
     private func clearData() {

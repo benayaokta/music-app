@@ -13,6 +13,7 @@ final class HomeTableViewCell: UITableViewCell {
     let trackArtwork: UIImageView = UIImageView()
     let trackName: UILabel = UILabel()
     let artist: UILabel = UILabel()
+    let playIcon: UIImageView = UIImageView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -39,6 +40,7 @@ final class HomeTableViewCell: UITableViewCell {
             trackArtwork
             trackName
             artist
+            playIcon
         }
     }
     
@@ -55,8 +57,12 @@ final class HomeTableViewCell: UITableViewCell {
         
         artist.Top >= trackName.Bottom + 8
         
-        trackName.Trailing == self.layoutMarginsGuide.Trailing
+        trackName.Trailing == self.playIcon.Leading - 16
         artist.Trailing == trackName.Trailing
+        
+        playIcon.width(20).heightEqualsWidth().Trailing == self.layoutMarginsGuide.Trailing - 8
+        playIcon.Top == self.safeAreaLayoutGuide.Top + 8
+        
     }
     
     private func setupStyle() {
@@ -65,5 +71,7 @@ final class HomeTableViewCell: UITableViewCell {
         trackName.textColor = .black
         artist.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         artist.textColor = .black
+        
+        playIcon.image = UIImage(systemName: "play.circle")
     }
 }

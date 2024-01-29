@@ -42,6 +42,7 @@ struct ResultEntity {
     var songs: String
     var artworlURLString: String
     var previewURL: String
+    var isSelected: Bool = false
     
     init(name: String, songs: String, artworlURLString: String, preview url: String) {
         self.name = name
