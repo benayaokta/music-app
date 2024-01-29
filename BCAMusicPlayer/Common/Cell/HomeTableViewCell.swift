@@ -72,6 +72,6 @@ final class HomeTableViewCell: UITableViewCell {
         artist.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         artist.textColor = .black
         
-        playIcon.image = UIImage(systemName: "play.circle")
+        playIcon.image = UIImage(systemName: "play.fill")
     }
 }
