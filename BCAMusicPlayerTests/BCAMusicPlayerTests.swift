@@ -32,5 +32,29 @@ final class BCAMusicPlayerTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func test_homeIsLoaded() throws {
+        let sut = HomeInjection.provideHomeViewController()
+        sut.loadViewIfNeeded()
+        XCTAssertNotNil(sut.view)
+        XCTAssertNotNil(sut.viewModel)
+    }
+    
+    func test_isPlayingDidToggleTrue() throws {
+        let audio = AudioHelper.shared
+        audio.play()
+        XCTAssert(AudioHelper.shared.isPlaying, "Should be true")
+    }
+    
+    func test_isPlayingDidToggleFalse() throws {
+        let audio = AudioHelper.shared
+        audio.pause()
+        XCTAssert(AudioHelper.shared.isPlaying == false, "Should be false when pausing, no change variable")
+    }
+    
+    func test_isPlayingFalseOnStart() throws {
+        let audio = AudioHelper.shared
+        XCTAssert(AudioHelper.shared.isPlaying == false, "Should be false on start")
+    }
 
 }
