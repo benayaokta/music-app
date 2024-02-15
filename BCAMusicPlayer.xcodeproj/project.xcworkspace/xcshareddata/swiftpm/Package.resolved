@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/benayaokta/BECoreExtension",
       "state" : {
-        "revision" : "335b719aafcbdd6a2df93e79d5f5a1be4e459d40",
-        "version" : "1.0.0"
+        "revision" : "d17d5aa2885f1bbe807bf12028ffb5b4d04684f4",
+        "version" : "1.0.1"
       }
     },
     {
