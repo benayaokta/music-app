@@ -118,6 +118,14 @@ final class AudioControlComponent: UIView {
         buttonAction.addAction(handler)
     }
     
+    func setBackwardAction(handler: @escaping () -> Void) {
+        backward.addAction(handler)
+    }
+    
+    func setForwardAction(handler: @escaping () -> Void) {
+        forward.addAction(handler)
+    }
+    
     func showTrack(name: String, artist: String, artwork: String) {
         trackArtwork.sd_imageIndicator = SDWebImageActivityIndicator()
         trackArtwork.sd_setImage(with: URL(string: artwork), placeholderImage: UIImage(named: "photo"), options: [.progressiveLoad])

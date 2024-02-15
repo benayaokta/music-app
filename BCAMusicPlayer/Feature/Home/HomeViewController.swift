@@ -83,6 +83,16 @@ final class HomeViewController: BaseViewController {
                 AudioHelper.shared.play()
             }
         })
+        
+        audioPlayingView.setBackwardAction { [weak self] in
+            guard let self else { return }
+            self.viewModel.goToPrevTrack()
+        }
+        
+        audioPlayingView.setForwardAction { [weak self] in
+            guard let self else { return }
+            self.viewModel.goToNextTrack()
+        }
     }
     
     private func setupObservables() {
@@ -144,6 +154,13 @@ final class HomeViewController: BaseViewController {
             self.audioPlayingView.showTrack(name: data?.songs ?? "",
                                             artist: data?.name ?? "",
                                             artwork: data?.artworlURLString ?? "")
+        }.store(in: &cancellables)
+        
+        
+        viewModel.shouldPlaySong.sink { [weak self] data in
+            guard let data else { return }
+            guard let self else { return }
+            self.playAudio(from: data)
         }.store(in: &cancellables)
     }
     
@@ -211,9 +228,14 @@ extension HomeViewController: UITableViewDelegate {
         /// dan ada singleton untuk handle audio nya + handle view untuk play pause itu view logic
         let data = viewModel.allArtist.results[indexPath.row]
         viewModel.toggleRowSelected(index: indexPath.row, selected: true)
+        viewModel.setCurrentPlayingIndex(index: indexPath.row)
         
-        guard let url = URL(string: data.previewURL) else { return }
+        self.playAudio(from: data)
         shouldShowAudioControl = shouldShowAudioControl == false
+    }
+    
+    private func playAudio(from data: ResultEntity) {
+        guard let url = URL(string: data.previewURL) else { return }
         nowPlaying = data
         AudioHelper.shared.playAudio(of: url)
         AudioHelper.shared.play()

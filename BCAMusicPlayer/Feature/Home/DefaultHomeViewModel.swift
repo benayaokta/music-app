@@ -7,16 +7,21 @@
 
 import Foundation
 import Combine
+import CoreExtension
 
 protocol HomeViewModelInput {
     func sendSearchResult(text: String)
     func toggleRowSelected(index: Int, selected: Bool)
+    func setCurrentPlayingIndex(index: Int)
+    func goToNextTrack()
+    func goToPrevTrack()
 }
 
 protocol HomeViewModelOutput {
     var allArtist: SearchArtistEntity { get }
     var shouldReload: PassthroughSubject<Bool, Never> { get }
     var viewResultWrapper: CurrentValueSubject<StateWrapper, Never> { get }
+    var shouldPlaySong: PassthroughSubject<ResultEntity?, Never> { get }
 }
 
 protocol HomeViewModel: HomeViewModelInput, HomeViewModelOutput { }
@@ -26,9 +31,10 @@ final class DefaultHomeViewModel: HomeViewModel {
     var allArtist: SearchArtistEntity = SearchArtistEntity()
     var viewResultWrapper: CurrentValueSubject<StateWrapper, Never> = CurrentValueSubject<StateWrapper, Never>(.idle)
     var shouldReload: PassthroughSubject<Bool, Never> = PassthroughSubject<Bool, Never>()
+    private var currentPlayingIndex: Int?
     
     private var temporaryIndex: Int?
-    
+    var shouldPlaySong: PassthroughSubject<ResultEntity?, Never> = PassthroughSubject<_, Never>()
     private var cancellables: Set<AnyCancellable> = []
     
     var repo: HomeRepoProtocol
@@ -72,6 +78,36 @@ final class DefaultHomeViewModel: HomeViewModel {
         
         shouldReload.send(true)
     }
+    
+    func setCurrentPlayingIndex(index: Int) {
+        self.currentPlayingIndex = index
+    }
+    
+    func goToPrevTrack() {
+        if let currentPlayingIndex {
+            let prevIndex = currentPlayingIndex - 1
+            if allArtist.results[safe: prevIndex] != nil {
+                self.currentPlayingIndex = prevIndex
+                shouldPlaySong.send(allArtist.results[safe: prevIndex])
+                toggleRowSelected(index: prevIndex, selected: true)
+            }
+        }
+    }
+    
+    func goToNextTrack() {
+        if let currentPlayingIndex {
+            let nextIndex = currentPlayingIndex + 1
+            if allArtist.results[safe: nextIndex] != nil {
+                self.currentPlayingIndex = nextIndex
+                shouldPlaySong.send(allArtist.results[safe: nextIndex])
+                toggleRowSelected(index: nextIndex, selected: true)
+            }
+        }
+    }
+    
+}
+
+extension DefaultHomeViewModel {
     
     private func clearData() {
         self.allArtist.results.removeAll()
