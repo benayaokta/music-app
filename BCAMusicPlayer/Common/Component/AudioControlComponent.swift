@@ -16,6 +16,9 @@ final class AudioControlComponent: UIView {
     private let trackArtwork: UIImageView = UIImageView()
     private let nowPlayingLabel: UILabel = UILabel()
     
+    private let backward: UIButton = UIButton()
+    private let forward: UIButton = UIButton()
+    
     required init?(coder: NSCoder) {
         fatalError("init coder has not been implemented")
     }
@@ -37,7 +40,9 @@ final class AudioControlComponent: UIView {
             trackArtwork
             trackName
             trackArtist
+            backward
             buttonAction
+            forward
         }
     }
     
@@ -54,20 +59,35 @@ final class AudioControlComponent: UIView {
         trackName.Leading == trackArtwork.Trailing + 8
         
         trackArtist.Leading == trackName.Leading
-        trackArtist.Bottom == trackArtwork.Bottom
-        trackArtist.Top >= trackName.Bottom + 8
+        trackArtist.Top == trackName.Bottom
         
-        trackName.Trailing == buttonAction.Leading - 16
+        trackName.Trailing == self.layoutMarginsGuide.Trailing
         trackArtist.Trailing == trackName.Trailing
+        
+        backward.width(30).height(20).Leading == trackArtwork.Trailing + 8
+        backward.Bottom == trackArtwork.Bottom
+        backward.Top >= trackArtist.Bottom + 4
 
-        buttonAction.width(50).heightEqualsWidth().centerVertically().Trailing == self.layoutMarginsGuide.Trailing - 16
+        buttonAction.Leading == backward.Trailing + 8
+        buttonAction.Top == backward.Top
+        buttonAction.Bottom == backward.Bottom
+        buttonAction.Width == backward.Width
+        buttonAction.Height == backward.Height
+        
+        forward.Width == backward.Width
+        forward.Height == backward.Height
+        forward.Trailing >= self.Trailing - 16
+        forward.Top == backward.Top
+        forward.Bottom == backward.Bottom
+        forward.Leading == buttonAction.Trailing + 16
         
     }
     
     private func setupStyle() {
         self.isHidden = true
         self.backgroundColor = .white
-        buttonAction.setTitleColor(.black, for: .normal)
+        
+        buttonAction.tintColor = .black
         
         nowPlayingLabel.text = "Now Playing"
         
@@ -79,10 +99,19 @@ final class AudioControlComponent: UIView {
         trackArtist.textColor = .black
         
         trackName.numberOfLines = 0
+        
+        backward.setTitle("back", for: .normal)
+        backward.setTitleColor(.black, for: .normal)
+        forward.setTitle("next", for: .normal)
+        forward.setTitleColor(.black, for: .normal)
     }
     
-    func setTitle(text: String) {
-        buttonAction.setTitle(text, for: .normal)
+    func togglePlayButton() {
+        buttonAction.setImage(UIImage.init(systemName: "play.fill"), for: .normal)
+    }
+    
+    func togglePauseButton() {
+        buttonAction.setImage(UIImage.init(systemName: "pause.fill"), for: .normal)
     }
     
     func setButtonAction(handler: @escaping () -> Void) {

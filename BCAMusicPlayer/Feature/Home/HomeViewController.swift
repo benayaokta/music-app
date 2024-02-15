@@ -119,12 +119,15 @@ final class HomeViewController: BaseViewController {
             }
         }.store(in: &cancellables)
         
-        
         AudioHelper.shared.$isPlaying
             .sink { [weak self] isPlaying in
                 guard let self else { return }
                 self.isPlayingFlag = isPlaying
-                self.audioPlayingView.setTitle(text: isPlaying ? "Pause" : "Play")
+                if isPlaying {
+                    self.audioPlayingView.togglePauseButton()
+                } else {
+                    self.audioPlayingView.togglePlayButton()
+                }
             }.store(in: &cancellables)
         
         self.$shouldShowAudioControl
@@ -151,6 +154,7 @@ final class HomeViewController: BaseViewController {
         tableView.registerCellClass(type: HomeTableViewCell.self)
         setTableViewBG()
     }
+    
     private func setTableViewBG() {
         tableView.backgroundView = bgView
     }
